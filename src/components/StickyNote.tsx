@@ -6,8 +6,6 @@ import DeleteModal from "./DeleteModal";
 export interface Note {
   id: number;
   content: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 export default function StickyNote() {
@@ -20,8 +18,6 @@ export default function StickyNote() {
   if (saved) {
     return JSON.parse(saved).map((n: any) => ({
       ...n,
-      createdAt: new Date(n.createdAt),
-      updatedAt: new Date(n.updatedAt),
     }));
   }
   return [];
@@ -36,8 +32,6 @@ export default function StickyNote() {
     const newNote: Note = {
       id: Date.now(),
       content,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     };
     setNotes((prev) => [...prev, newNote]);
   };
@@ -45,7 +39,7 @@ export default function StickyNote() {
   const editNote = (id: number, content: string) => {
     setNotes((prev) =>
       prev.map((n) =>
-        n.id === id ? { ...n, content, updatedAt: new Date() } : n
+        n.id === id ? { ...n, content} : n
       )
     );
     setEditingId(null);

@@ -7,7 +7,7 @@ interface Props {
   isEditing: boolean;
 }
 
-export default function NoteItem({ note, onEdit, onDelete, isEditing }: Props) {
+export default function NoteItem({ note, onEdit, onDelete}: Props) {
   return (
     <div>
       <div
